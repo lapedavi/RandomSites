@@ -55,6 +55,10 @@ namespace RandomSites {
 
         #region Public Functions
 
+        public decimal getPercentOfTotal(decimal total) {
+            return ((Additions + Deletions) / total);
+        }
+
         public void incrementCommit() {
             _Commits++;
         }

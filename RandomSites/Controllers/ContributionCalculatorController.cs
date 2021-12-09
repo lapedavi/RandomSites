@@ -18,6 +18,11 @@ namespace RandomSites {
         [HttpPost]
         public IActionResult Calculate(string url) {
             Dictionary<string,UserContribution> userContributions = Calculate_ViewModel.getContributions(url);
+            decimal total = 0;
+            foreach (UserContribution uc in userContributions.Values) {
+                total += uc.Additions + uc.Deletions;
+            }
+            ViewBag.Total = total;
             return View("Report",userContributions);
         }
     }

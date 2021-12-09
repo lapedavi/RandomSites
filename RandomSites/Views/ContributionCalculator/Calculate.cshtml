@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Calculate";
 }
 
 <h1>Calculate</h1>
 
 <hr />
-<form asp-action="Calculate">
+<form asp-action="Calculate" onsubmit="inform();">
     <div class="form-group">
         <label name="url" class="control-label"></label>
         <input name="url" type="text" class="form-control" />
@@ -23,3 +23,10 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    function inform() {
+        alert('This may take a while.');
+        return;
+    }
+</script>

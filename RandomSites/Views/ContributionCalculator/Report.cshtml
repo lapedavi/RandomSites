@@ -1,4 +1,4 @@
-﻿@model List<UserContribution>
+﻿@model Dictionary<string, UserContribution>
 @{
     ViewData["Title"] = "Report";
 }
@@ -6,11 +6,28 @@
 
 <h1>Report</h1>
 <hr />
-@foreach (UserContribution uc in Model) {
-    <h2>@uc.User</h2>
-    <ul>
-        <li>@uc.Commits</li>
-        <li>@uc.Additions</li>
-        <li>@uc.Deletions</li>
-    </ul>
-}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">User</th>
+            <th scope="col">Num Of Commits</th>
+            <th scope="col">Num of Additions</th>
+            <th scope="col">Num of Deletions</th>
+            <th scope="col">% of Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (UserContribution uc in Model.Values) {
+            <tr>
+                <td scope="row">@uc.User</td>
+                <td>@uc.Commits</td>
+                <td>@uc.Additions</td>
+                <td>@uc.Deletions</td>
+                @if (ViewBag.Total != null) {
+                    <td>@Math.Round((uc.getPercentOfTotal(ViewBag.Total) * 100), 2)%</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="page-link text-dark" asp-area="" asp-controller="ContributionCalculator" asp-action="Calculate">Calculate Another Repo</a>
