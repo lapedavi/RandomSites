@@ -1,0 +1,16 @@
+﻿@model List<UserContribution>
+@{
+    ViewData["Title"] = "Report";
+}
+
+
+<h1>Report</h1>
+<hr />
+@foreach (UserContribution uc in Model) {
+    <h2>@uc.User</h2>
+    <ul>
+        <li>@uc.Commits</li>
+        <li>@uc.Additions</li>
+        <li>@uc.Deletions</li>
+    </ul>
+}

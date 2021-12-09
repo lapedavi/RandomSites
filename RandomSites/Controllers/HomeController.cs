@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RandomSites.Controllers {
+namespace RandomSites {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
 
