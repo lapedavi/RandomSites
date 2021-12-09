@@ -23,6 +23,7 @@ namespace RandomSites {
                 total += uc.Additions + uc.Deletions;
             }
             ViewBag.Total = total;
+            ViewBag.TimeTaken = Calculate_ViewModel.sw.Elapsed.Minutes + " Minutes " + Calculate_ViewModel.sw.Elapsed.Seconds + " Seconds";
             return View("Report",userContributions);
         }
     }

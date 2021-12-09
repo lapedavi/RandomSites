@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using System.Diagnostics;
 
 namespace RandomSites {
     public class Calculate_ViewModel {
 
+        public static Stopwatch sw = new Stopwatch();
+
         public static Dictionary<string, UserContribution> getContributions(string url) {
+            sw.Start();
+
             Dictionary<string, UserContribution> retDict = new Dictionary<string, UserContribution>();
 
             var web = new HtmlWeb();
@@ -66,6 +71,8 @@ namespace RandomSites {
                     historyDoc = web.Load(url);
                 }
             }
+
+            sw.Stop();
             return retDict;
         }
 
