@@ -1,0 +1,27 @@
+﻿@model List<Survey>
+@{
+    ViewData["Title"] = "Survey";
+}
+
+<h1>Survey</h1>
+<hr />
+<h2>What is it?</h2>
+<p>Hello, Survey is meant for someone to be able to create a survey and give the link to said survey out to the people they choose to and those individuals will be able to take said survey and see the total results</p>
+<a class="page-link text-dark" asp-area="" asp-controller="Survey" asp-action="Create">Create a Survey</a>
+<h2 class="index">Surveys</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Survey Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Survey s in Model) {
+            <tr>
+                <td>@s.ID</td>
+                <td>@s.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
