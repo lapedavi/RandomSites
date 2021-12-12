@@ -19,6 +19,10 @@ namespace RandomSites {
             services.AddLiveReload();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddMvc().AddRazorRuntimeCompilation();
+            DAL.Set(
+                Configuration.GetConnectionString("ReadOnlyConnectionString")
+                , Configuration.GetConnectionString("EditOnlyConnectionString")
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
