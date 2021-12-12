@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace RandomSites {
-    public class HomeController : Controller {
+    public class HomeController : BaseController {
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger) {
@@ -16,6 +16,9 @@ namespace RandomSites {
         }
 
         public IActionResult Index() {
+            AddMessage(Message.type.Warning, "Warning Message");
+            AddMessage(Message.type.Error, "Error Message");
+            AddMessage(Message.type.Success, "Success Message");
             return View();
         }
 

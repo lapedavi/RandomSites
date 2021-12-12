@@ -1,0 +1,26 @@
+﻿
+.Messages {
+    list-style:none;
+    padding: 0px 20px 0px 20px;
+}
+
+    .Messages .Success {
+        border: 1px solid #0F0;
+        background-color: #EFE;
+    }
+
+    .Messages .Warning {
+        border: 1px solid #FF0;
+        background-color: #FFE;
+    }
+
+    .Messages .Error {
+        border: 1px solid #F00;
+        background-color: #FEE;
+    }
+
+    .Messages .Message {
+        border-radius: 15px;
+        margin: 5px 0px 5px 0px;
+        padding: 0px 0px 0px 5px;
+    }

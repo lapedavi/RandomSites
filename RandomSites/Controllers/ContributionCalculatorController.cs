@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack; 
 
 namespace RandomSites {
-    public class ContributionCalculatorController : Controller {
+    public class ContributionCalculatorController : BaseController {
         public IActionResult Index() {
             return View();
         }

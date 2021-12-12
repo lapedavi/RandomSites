@@ -1,4 +1,10 @@
 ﻿<!DOCTYPE html>
+@{
+    List<Message> Messages = new List<Message>();
+    if (TempData["Messages"] != null) {
+        Messages = (List<Message>)TempData["Messages"];
+    }
+}
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,6 +12,7 @@
     <title>@ViewData["Title"] - RandomSites</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/GeneralStyles.css" />
 </head>
 <body>
     <header>
@@ -28,6 +35,13 @@
                 </div>
             </div>
         </nav>
+        @if (Messages.Count > 0) {
+            <ul class="Messages">
+                @foreach (Message m in Messages) {
+                    <li class="Message @m.Type">@m.Type: @m.MessageString</li>
+                }
+            </ul>
+        }
     </header>
     <div class="container">
         <main role="main" class="pb-3">
