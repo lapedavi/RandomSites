@@ -48,7 +48,7 @@ namespace RandomSites {
                             retDict[author].incrementCommit();
                         }
                         commitID++;
-                    } catch (Exception e) {
+                    } catch {
                         exceptionCount++;
                         break;
                     }
@@ -60,13 +60,18 @@ namespace RandomSites {
                     commitID = 1;
                     try {
                         url = historyDoc.DocumentNode.SelectSingleNode("/html/body/div[4]/div/main/div[2]/div/div[3]/div/a[2]").GetAttributeValue("href", "Link not found");
-                    } catch (Exception e) {
-                        if (state == 0) {
-                            url = historyDoc.DocumentNode.SelectSingleNode("/html/body/div[4]/div/main/div[2]/div/div[3]/div/a").GetAttributeValue("href", "Link not found");
-                            state++;
-                        } else {
+                    } catch {
+                        try {
+                            if (state == 0) {
+                                url = historyDoc.DocumentNode.SelectSingleNode("/html/body/div[4]/div/main/div[2]/div/div[3]/div/a").GetAttributeValue("href", "Link not found");
+                                state++;
+                            } else {
+                                break;
+                            }
+                        } catch {
                             break;
                         }
+                        
                     }
                     historyDoc = web.Load(url);
                 }
