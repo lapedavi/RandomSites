@@ -71,7 +71,6 @@ namespace RandomSites {
                         } catch {
                             break;
                         }
-                        
                     }
                     historyDoc = web.Load(url);
                 }
