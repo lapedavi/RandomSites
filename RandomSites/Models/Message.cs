@@ -8,15 +8,15 @@ namespace RandomSites {
 
         #region Private Variables
 
-        private int _Type;
+        private MessageType _Type;
         private string _Message;
 
         #endregion
 
         #region Constructors
 
-        public Message(type type, string message) {
-            _Type = (int)type;
+        public Message(MessageType type, string message) {
+            _Type = type;
             _Message = message;
         }
 
@@ -24,7 +24,7 @@ namespace RandomSites {
 
         #region Public Properties
 
-        public enum type {
+        public enum MessageType {
             Error = 1,
             Success = 0,
             Warning = -1
@@ -32,15 +32,7 @@ namespace RandomSites {
 
         public string Type {
             get {
-                string MessageType = "Type not found";
-                if (_Type == 1) {
-                    MessageType = "Error";
-                } else if (_Type == 0) {
-                    MessageType = "Success";
-                } else if (_Type == -1) {
-                    MessageType = "Warning";
-                }
-                return MessageType;
+                return Enum.GetName(typeof(MessageType),_Type);
             }
         }
 

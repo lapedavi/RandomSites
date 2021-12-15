@@ -32,7 +32,7 @@ namespace RandomSites {
             return retList;
         }
 
-        public void AddMessage(Message.type MessageType,string Message) {
+        public void AddMessage(Message.MessageType MessageType,string Message) {
             _Messages.Add(new Message(MessageType, Message));
         }
 
