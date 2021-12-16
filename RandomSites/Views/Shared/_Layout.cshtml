@@ -1,9 +1,6 @@
 ﻿<!DOCTYPE html>
 @{
-    List<Message> Messages = new List<Message>();
-    if (TempData["Messages"] != null) {
-        Messages = (List<Message>)TempData["Messages"];
-    }
+    List<Message> Messages = Message.getFromString((List<string>)TempData["Messages"]);
 }
 <html lang="en">
 <head>
@@ -38,10 +35,10 @@
                 </div>
             </div>
         </nav>
-        @if (Messages.Count > 0) {
+        @if (Messages != null && Messages.Count > 0) {
             <ul class="Messages">
-                @foreach (Message m in Messages) {
-                    <li class="Message @m.Type">@m.Type: @m.MessageString</li>
+                @foreach (Message msg in Messages) {
+                    <li class="Message @msg.Type">@msg.MessageString</li>
                 }
             </ul>
         }

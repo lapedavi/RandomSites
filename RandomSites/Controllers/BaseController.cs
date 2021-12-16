@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace RandomSites {
@@ -11,29 +12,29 @@ namespace RandomSites {
         public BaseController() {
         }
 
-        private List<Message> _Messages;// = new List<Message>();
+        private List<string> _Messages;// = new List<Message>();
 
         public override void OnActionExecuting(ActionExecutingContext context) {
             base.OnActionExecuting(context);
             _Messages = GetMessages();
             TempData["Messages"] = _Messages;
-            _Messages.Clear();
         }
 
-        private List<Message> GetMessages() {
-            List<Message> retList = new List<Message>();
-            if(TempData != null && TempData.ContainsKey("Messages")) {
-                object TempValue = TempData["Messages"];
-                if(TempValue != null) {
-                    Message[] messages = (Message[])TempData["Messages"];
+        private List<string> GetMessages() {
+            List<string> retList = new List<string>();
+            if (TempData != null && TempData.ContainsKey("Messages")) {
+                object tempValue = TempData["Messages"];
+                if (tempValue != null) { // verifying not empty
+                    // got converted to a string array
+                    string[] messages = (string[])TempData["Messages"];
                     retList = messages.ToList();
                 }
             }
             return retList;
         }
 
-        public void AddMessage(Message.MessageType MessageType,string Message) {
-            _Messages.Add(new Message(MessageType, Message));
+        protected void AddMessage(Message.MessageType messageType, string Message) {
+            _Messages.Add(JsonSerializer.Serialize(new Message(messageType, Message)));
         }
 
     }
