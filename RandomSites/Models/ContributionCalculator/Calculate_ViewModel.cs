@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Diagnostics;
 
-namespace RandomSites {
+namespace RandomSites.ContributionCalculator {
     public class Calculate_ViewModel {
 
         public static Stopwatch sw = new Stopwatch();
