@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RandomSites.ContributionCalculator {
+namespace RandomSites {
     public class UserContribution {
 
         #region Private Variables

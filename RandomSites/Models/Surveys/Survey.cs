@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 
-namespace RandomSites.Surveys {
+namespace RandomSites {
     public class Survey : DatabaseRecordNamed {
 
         #region Constructors
