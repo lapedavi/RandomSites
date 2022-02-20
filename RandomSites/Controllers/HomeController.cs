@@ -16,13 +16,17 @@ namespace RandomSites {
         }
 
         public IActionResult Index() {
-            AddMessage(Message.type.Warning, "Warning Message");
-            AddMessage(Message.type.Error, "Error Message");
-            AddMessage(Message.type.Success, "Success Message");
+            //AddMessage(Message.type.Warning, "Warning Message");
+            //AddMessage(Message.type.Error, "Error Message");
+            //AddMessage(Message.type.Success, "Success Message");
             return View();
         }
 
         public IActionResult Privacy() {
+            return View();
+        }
+
+        public IActionResult Sites() {
             return View();
         }
 
