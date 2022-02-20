@@ -26,7 +26,7 @@ namespace RandomSites.CardGame.AutoWar {
         public int draw() {
             checkDeck();
             int card;
-            if (CurrentDeck[0] == 0) {
+            if (CurrentDeck.Count() == 0) {
                 card = -1;
             } else {
                 card = CurrentDeck[0];
@@ -58,6 +58,19 @@ namespace RandomSites.CardGame.AutoWar {
             if(_currentDeck.Count() <= 0) {
                 _currentDeck.AddRange(_winnings);
                 _winnings.Clear();
+            }
+        }
+
+        public void deleteInvalids() {
+            if (_currentDeck.Contains(-1)) {
+                while (_currentDeck.Contains(-1)) {
+                    _currentDeck.Remove(-1);
+                }
+            }
+            if (_winnings.Contains(-1)) {
+                while (_winnings.Contains(-1)) {
+                    _winnings.Remove(-1);
+                }
             }
         }
     }
