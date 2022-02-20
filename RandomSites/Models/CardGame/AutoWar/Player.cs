@@ -8,7 +8,7 @@ namespace RandomSites.CardGame.AutoWar {
 
         private string _Name;
         private List<int> _currentDeck;
-        private List<int> _winnings;
+        private List<int> _winnings = new List<int>();
 
         public Player(string name) {
             _Name = name;
@@ -20,6 +20,44 @@ namespace RandomSites.CardGame.AutoWar {
             }
             get {
                 return _currentDeck;
+            }
+        }
+
+        public int draw() {
+            checkDeck();
+            int card;
+            if (CurrentDeck[0] == 0) {
+                card = -1;
+            } else {
+                card = CurrentDeck[0];
+                _currentDeck.RemoveAt(0);
+            }
+            return card;
+        }
+
+        public void won(List<int> winnings) {
+            _winnings.AddRange(winnings);
+        }
+
+        public bool lost() {
+            bool decision = false;
+            if (_currentDeck.Count <= 0 && _winnings.Count <= 0) {
+                decision = true;
+            }
+            return decision;
+        }
+
+        public List<int> allCards() {
+            List<int> allCards = new List<int>();
+            allCards.AddRange(CurrentDeck);
+            allCards.AddRange(_winnings);
+            return allCards;
+        }
+
+        private void checkDeck() {
+            if(_currentDeck.Count() <= 0) {
+                _currentDeck.AddRange(_winnings);
+                _winnings.Clear();
             }
         }
     }

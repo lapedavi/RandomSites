@@ -13,7 +13,7 @@ namespace RandomSites.Controllers {
 
         public IActionResult AutoWar() {
             Game g = new Game();
-            return View();
+            return View(g);
         }
     }
 }

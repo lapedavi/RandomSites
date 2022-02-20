@@ -1,6 +1,27 @@
-﻿@{
+﻿@model RandomSites.CardGame.AutoWar.Game
+@{
     ViewData["Title"] = "Auto War";
 }
 
 <h1>Auto War</h1>
 <p>The purpose of auto war was to have the computer automatically play a game of war, below its lists every round</p>
+<a asp-action="AutoWar">Redo</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Round</th>
+            <th>Player 1 Cards</th>
+            <th>Player 2 Cards</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (KeyValuePair<int, (int, int)> rounds in Model.Rounds) {
+            <tr>
+                <td>Round @rounds.Key</td>
+                <td>@rounds.Value.Item1</td>
+                <td>@rounds.Value.Item2</td>
+            </tr>
+        }
+    </tbody>
+</table>
