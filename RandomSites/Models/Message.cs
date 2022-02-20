@@ -70,7 +70,11 @@ namespace RandomSites {
 
         #endregion
 
-        public static List<Message> getFromString(List<string> MessageList) {
+    }
+
+    public static class Messages {
+
+        public static List<Message> Deserialize(List<string> MessageList) {
             List<Message> retList = new List<Message>();
             foreach (string jsonString in MessageList) {
                 Message message = JsonSerializer.Deserialize<Message>(jsonString);
@@ -79,5 +83,13 @@ namespace RandomSites {
             return retList;
         }
 
+        public static string[] Serizalize(List<Message> MessageList) {
+            List<string> retList = new List<string>();
+            foreach (Message message in MessageList) {
+                string jsonString = JsonSerializer.Serialize(message);
+                retList.Add(jsonString);
+            }
+            return retList.ToArray();
+        }
     }
 }

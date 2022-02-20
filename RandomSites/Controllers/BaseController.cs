@@ -33,7 +33,23 @@ namespace RandomSites {
             return retList;
         }
 
-        protected void AddMessage(Message.MessageType messageType, string Message) {
+        protected void AddSuccess(string mess) {
+            AddMessage(mess, Message.MessageType.Success);
+        }
+        protected void AddWarning(string mess) {
+            AddMessage(mess, Message.MessageType.Warning);
+        }
+        protected void AddError(string mess) {
+            AddMessage(mess, Message.MessageType.Error);
+        }
+
+        protected void AddPermissionError(string actionVerb, string objectAttempted) {
+            AddError(String.Format(
+                "I am sorry, you are not allowed to {0} {1}.",
+                actionVerb, objectAttempted));
+        }
+
+        protected void AddMessage(string Message, Message.MessageType messageType) {
             _Messages.Add(JsonSerializer.Serialize(new Message(messageType, Message)));
         }
 
