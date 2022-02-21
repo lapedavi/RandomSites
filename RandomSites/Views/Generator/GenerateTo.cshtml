@@ -1,0 +1,37 @@
+﻿@model List<int>
+@{
+    ViewData["Title"] = "Random Number";
+}
+
+<h1>Random Number Generator</h1>
+<p>Generates a series of random numbers that will add up to the total</p>
+<a asp-action="Index">Back to Index</a>
+
+<form asp-action="GenerateTo">
+    <div>
+        <label for="targetSum">Sum:</label>
+        <input type="number" name="targetSum" required />
+    </div>
+
+    <div>
+        <label for="numberAmount">Amount of Numbers:</label>
+        <input type="number" name="numberAmonut" required />
+    </div>
+
+    <div>
+        <input type="submit" value="Generate" />
+    </div>
+</form>
+
+@if (Model != null) {
+    <h3>
+        Sequence:
+        @for (int x = 0; x < Model.Count(); x++) {
+            @if (x == Model.Count() - 1) {
+                <span>@Model[x]</span>
+            } else {
+                <span>@Model[x] ,</span>
+            }
+        }
+    </h3>
+}
